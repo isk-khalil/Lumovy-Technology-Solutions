@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        padding: 20px;
+      }
+      .main-container {
+        width: 90%;
+        max-width: 800px;
+        margin: 30px auto;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      h2 {
+        margin-top: 25px;
+      }
+
+      .task-form input {
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      .task-form button {
+        padding: 5px 10px;
+        font-size: 16px;
+      }
+
+      .todo-list {
+        padding-left: 30px;
+      }
+
+      .todo-list li {
+        background: #f1f1f1;
+        padding: 10px;
+        margin-bottom: 8px;
+
+        /* Keeps task text and buttons on the same line */
+        display: flex;
+        align-items: center;
+      }
+
+      .text {
+        margin-right: 10px;
+      }
+
+      .todo-buttons {
+        display: flex;
+        gap: 6px;
+      }
+
+      .todo-btn {
+        padding: 4px 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <h1>Task Management List</h1>
+      <p>This page is being controlled using JavaScript DOM APIs.</p>
+
+      <form class="task-form">
+        <label for="task-input">Task Title</label>
+        <br /><br />
+        <input type="text" id="task-input" placeholder="Add Task" />
+
+        <button type="submit">Add Task</button>
+      </form>
+
+      <h2>Task Summary</h2>
+
+      <p>Total Tasks: <span id="total-count">0</span></p>
+
+      <h2>Tasks</h2>
+
+      <p id="empty-message">No Tasks Available.</p>
+
+      <ul class="todo-list"></ul>
+    </div>
+
+    <script>
+      const todoForm = document.querySelector(".task-form");
+      const todoInput = document.querySelector("#task-input");
+      const newList = document.querySelector(".todo-list");
+
+      const emptyMessage = document.querySelector("#empty-message");
+      const totalCount = document.querySelector("#total-count");
+
+      // Add Task
+      todoForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const newItemText = todoInput.value;
+
+        if (newItemText === "") {
+          return;
+        }
+
+        const newItem = document.createElement("li");
+
+        newItem.innerHTML = `
+        <span class="text">${newItemText}</span>
+
+        <div class="todo-buttons">
+            <button class="todo-btn done">Complete</button>
+            <button class="todo-btn remove">Delete</button>
+        </div>`;
+
+        newList.append(newItem);
+
+        todoInput.value = "";
+
+        // Increase counter
+        totalCount.textContent = newList.children.length;
+
+        // Hide empty message
+        emptyMessage.style.display = "none";
+      });
+
+      // Complete and Delete buttons
+      newList.addEventListener("click", (e) => {
+        // Complete button
+        if (e.target.classList.contains("done")) {
+          const targetedLi = e.target.closest("li");
+
+          targetedLi.querySelector(".text").style.textDecoration =
+            "line-through";
+        }
+
+        // Delete button
+        if (e.target.classList.contains("remove")) {
+          const targetedLi = e.target.closest("li");
+
+          targetedLi.remove();
+
+          // Update counter
+          totalCount.textContent = newList.children.length;
+
+          // Show message if there are no tasks
+          if (newList.children.length === 0) {
+            emptyMessage.style.display = "block";
+          }
+        }
+      });
+      //         const todoForm = document.querySelector(".task-form");
+      //         const todoInput = document.querySelector(".task-form input[type='text']");
+      //         const newList = document.querySelector(".todo-list");
+      //         todoForm.addEventListener("submit", (e) => {
+      //             e.preventDefault();  // prevent from refreshing the page when enters or Add Todo
+      //             const newItemText = todoInput.value;
+      //             const newItem = document.createElement("li");
+      //             const newInnerHTML =
+      //                 `<span class="text">${newItemText}</span>
+      //                 <div class="todo-buttons">
+      //                     <button class="todo-btn done">Done</button>
+      //                     <button class="todo-btn remove">Remove</button>
+      //                 </div>`;
+      //             newItem.innerHTML = newInnerHTML;
+      //             newList.append(newItem);
+      //             todoInput.value = "";
+      // });
+
+      //         newList.addEventListener("click", (e) => {
+      //             if (e.target.classList.contains("remove")) {
+      //                 const targetedLi = e.target.parentNode.parentNode;
+      //                 targetedLi.remove();
+      //             }
+      //             if (e.target.classList.contains("done")) {
+      //                 const liSpan = e.target.parentNode.previousElementSibling;
+      //                 liSpan.style.textDecoration = "line-through";
+      //             }
+      // })
+    </script>
+  </body>
+</html>

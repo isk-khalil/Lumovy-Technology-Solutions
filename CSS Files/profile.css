@@ -1,0 +1,166 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+p {
+    font-size: 14px;
+}
+
+.hero-section {
+    width: 90%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+
+.main-div {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 16px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+h2 {
+    margin: 0;
+}
+
+h4 {
+    margin: 0;
+    color: gray;
+    font-weight: 400;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.intro {
+    flex:1;
+}
+
+.buttons-div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.follow {
+    background: royalblue;
+    color: white;
+}
+
+.follow:hover {
+    background: rgb(57, 93, 202);
+}
+
+.message {
+    background: seagreen;
+    color: white;
+}
+.message:hover {
+    background: rgb(40, 123, 76);
+}
+
+/* @media screen and (min-width: 468px) {
+    .hero-section {
+        width: 100%;
+    }
+    
+} */
+
+@media screen and (min-width: 468px) {
+    .main-div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .buttons-div {
+        display: flex;
+        flex-direction: row;
+        gap:12px;
+    }
+    .buttons-div button {
+    flex: 1;
+    }
+} 
+
+
+/* .hero-section {
+    width: 500px;
+    padding: 24px;
+    border-radius: 8px;
+} */
+
+/* .main-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+.btn {
+    width: 100px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: coral;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+} */
+
+/* .image, .intro{
+    display: inline-block;
+    text-align: center;
+} */
+
+/* .about {
+    text-align: center;
+    padding: 12px;
+} */
+
