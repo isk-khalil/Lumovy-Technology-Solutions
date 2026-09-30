@@ -1,7 +1,14 @@
+
 function Footer({ year, appName }) {
   return (
-    <footer>
-      <p>© {year} {appName}</p>
+    <footer className="footer">
+      <p>
+        © {year} {appName}
+      </p>
+
+      <p>
+        Built with React
+      </p>
     </footer>
   );
 }
